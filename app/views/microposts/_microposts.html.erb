@@ -1,4 +1,4 @@
-<ul class="media-list">
+<ul class="media-list row">
   <% microposts.each do |micropost| %>
     <li class="media">
       <div class="media-left">
@@ -11,13 +11,13 @@
         <div>
           <p><%= micropost.content %></p>
         </div>
-        <div>
+        <div class="col-md-3">
+          <%= render 'likes/like_microposts_button', micropost: micropost %>
+        </div>
+        <div class="col-md-1">
           <% if current_user == micropost.user %>
             <%= link_to "Delete", micropost, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-xs' %>
           <% end %>
-        </div>
-        <div>
-          <%= render 'likes/like_microposts_button', micropost: micropost %>
         </div>
       </div>
     </li>
